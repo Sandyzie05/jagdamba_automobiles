@@ -8,5 +8,11 @@ export default defineConfig({
   build: {
     outDir: '../docs',
     emptyOutDir: true,
+    rollupOptions: {
+      input: {
+        main: 'index.html',
+        admin: 'admin.html',
+      },
+    },
   },
 })

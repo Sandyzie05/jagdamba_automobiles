@@ -21,6 +21,8 @@ export interface GalleryItem {
   caption: string
 }
 
+const publicAsset = (path: string) => `${import.meta.env.BASE_URL}${path}`
+
 export const siteContent = {
   location: {
     name: 'Jagdamba Automobiles',
@@ -101,50 +103,50 @@ export const siteContent = {
   ],
   gallery: [
     {
-      src: '/images/WhatsApp Image 2026-03-22 at 22.54.43.jpeg',
+      src: publicAsset('images/WhatsApp Image 2026-03-22 at 22.54.43.jpeg'),
       alt: 'Long view inside the shop showing shelves full of spare parts and accessories.',
       caption: 'Deep shelves of fast-moving parts for retail and wholesale buyers.',
     },
     {
-      src: '/images/WhatsApp Image 2026-03-22 at 22.54.42.jpeg',
+      src: publicAsset('images/WhatsApp Image 2026-03-22 at 22.54.42.jpeg'),
       alt: 'Accessory display with top boxes, lights and hanging products inside the store.',
       caption: 'Utility accessories, lights and boxes lined up for everyday upgrades.',
     },
     {
-      src: '/images/WhatsApp Image 2026-03-22 at 22.54.44.jpeg',
+      src: publicAsset('images/WhatsApp Image 2026-03-22 at 22.54.44.jpeg'),
       alt: 'Wall of helmets and stacked branded boxes inside the shop.',
       caption: 'A strong helmet wall with trusted brands riders recognize immediately.',
     },
     {
-      src: '/images/WhatsApp Image 2026-03-22 at 22.54.42 (1).jpeg',
+      src: publicAsset('images/WhatsApp Image 2026-03-22 at 22.54.42 (1).jpeg'),
       alt: 'Large display of helmets arranged on glass shelves.',
       caption: 'Helmet inventory that feels full, visible and easy to compare in person.',
     },
     {
-      src: '/images/WhatsApp Image 2026-03-22 at 23.23.02.jpeg',
+      src: publicAsset('images/WhatsApp Image 2026-03-22 at 23.23.02.jpeg'),
       alt: 'Close-up of a helmet held in the foreground with helmet inventory behind it.',
       caption: 'From daily commuter helmets to bolder styles for younger riders.',
     },
     {
-      src: '/images/WhatsApp Image 2026-03-22 at 23.22.59.jpeg',
+      src: publicAsset('images/WhatsApp Image 2026-03-22 at 23.22.59.jpeg'),
       alt: 'Close-up of helmets on display with one black helmet held near the camera.',
       caption: 'Safety gear displayed the way customers actually shop for it.',
     },
     {
-      src: '/images/WhatsApp Image 2026-03-22 at 23.58.28.jpeg',
+      src: publicAsset('images/WhatsApp Image 2026-03-22 at 23.58.28.jpeg'),
       alt: 'Modified alloy wheels displayed in blue, silver and black finishes.',
       caption: 'Alloy wheels and visual upgrades for riders who want a custom touch.',
     },
     {
-      src: '/images/WhatsApp Image 2026-03-22 at 23.23.04.jpeg',
+      src: publicAsset('images/WhatsApp Image 2026-03-22 at 23.23.04.jpeg'),
       alt: 'Interior photo showing multiple shelves of helmets and accessories.',
       caption: 'A dense, real-world showroom where customers can browse and compare.',
     },
   ] satisfies GalleryItem[],
   supportingImages: {
-    hero: '/images/store_front.jpeg',
-    brandMark: '/images/brand-mark.png',
-    signboard: '/images/store_info.jpeg',
+    hero: publicAsset('images/store_front.jpeg'),
+    brandMark: publicAsset('images/company_logo.jpg'),
+    signboard: publicAsset('images/store_info.jpeg'),
   },
 }
 
