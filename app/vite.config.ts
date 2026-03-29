@@ -1,11 +1,11 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// Production site is emitted to ../www (upload that folder to your host document root).
-// For GitHub Pages under a subpath, set base to '/your-repo-name/' and adjust hosting.
+// Must match the URL path where the site is served (leading + trailing slash).
+// Domain root: use '/'. Subfolder like sandyzie.in/jagdambaautomobiles: use below.
 export default defineConfig({
   plugins: [react()],
-  base: '/',
+  base: '/jagdambaautomobiles/',
   build: {
     outDir: '../www',
     emptyOutDir: true,
