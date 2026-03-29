@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [react()],
   base: '/jagdambaautomobiles/',
   build: {
-    outDir: '../www',
+    outDir: 'www',
     emptyOutDir: true,
     rollupOptions: {
       input: {
