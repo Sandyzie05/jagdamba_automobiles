@@ -11,7 +11,8 @@
     "build": "node -e \"var m=process.version.match(/^v([0-9]+)/);if(!m||+m[1]<18){console.error('Node 18+ required. Found: '+process.version);process.exit(1)}\" && tsc -b && vite build",
     "build:site": "npm run build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "vite preview --host 0.0.0.0 --port ${PORT:-4173}"
   },
   "dependencies": {
     "framer-motion": "^12.38.0",
