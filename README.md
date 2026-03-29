@@ -25,3 +25,11 @@ npm run preview  # test the built site locally
 - **Build on server:** set application root to the **repo root** (where `package.json` is), run **`npm install`** and **`npm run build`**, then serve **`www/`**.
 
 Admin “Publish to GitHub” updates **`public/...`** and **`www/...`** in the repo.
+
+## Build fails with `SyntaxError: Unexpected token ?` in TypeScript
+
+The server is almost certainly using **Node.js 10** (paths like `nodevenv/.../10/`). This stack needs **Node 18+** (20 LTS recommended).
+
+In your hosting **Node.js / Application** UI, change the app’s **Node version** from **10** to **18** or **20**, save, run **NPM Install** again, then **npm run build**.
+
+If you see a warning that `npm` and `node` are different binaries, enable **`--scripts-prepend-node-path`** in npm config or use the host’s “Run NPM Install” button so scripts use the same Node as the virtual environment.
