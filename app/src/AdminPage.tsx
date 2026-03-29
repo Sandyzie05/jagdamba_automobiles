@@ -254,18 +254,27 @@ function AdminPage() {
           : [],
       )
 
-      const pagesInventoryFile = 'docs/data/inventory.json'
+      const siteInventoryFile = 'www/data/inventory.json'
       const sourceInventoryFile = 'app/public/data/inventory.json'
+
+      const imagePathsForGithub = imageUploads.flatMap((upload) => [
+        {
+          path: `app/public/${upload.path}`,
+          file: upload.file,
+          message: `Upload inventory image for ${upload.itemId} (source)`,
+        },
+        {
+          path: `www/${upload.path}`,
+          file: upload.file,
+          message: `Upload inventory image for ${upload.itemId} (site)`,
+        },
+      ])
 
       await publishInventoryBundle(
         settings,
         serializeInventoryDocument(document),
-        [sourceInventoryFile, pagesInventoryFile],
-        imageUploads.map((upload) => ({
-          path: upload.path.replace(/^app\/public\//, 'docs/'),
-          file: upload.file,
-          message: `Upload inventory image for ${upload.itemId}`,
-        })),
+        [sourceInventoryFile, siteInventoryFile],
+        imagePathsForGithub,
       )
 
       setInventory(document.items.map((item) => ({ ...item })))
@@ -284,7 +293,7 @@ function AdminPage() {
 
     try {
       await deleteGithubFile(settings, `app/public/${item.imagePath}`, `Remove inventory image: ${item.name}`)
-      await deleteGithubFile(settings, `docs/${item.imagePath}`, `Remove inventory image: ${item.name}`)
+      await deleteGithubFile(settings, `www/${item.imagePath}`, `Remove inventory image: ${item.name}`)
     } catch {
       // Swallow delete errors; item removal should still succeed.
     }
