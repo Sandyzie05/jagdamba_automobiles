@@ -23,7 +23,7 @@ npm run preview  # test the built site locally
 
 - **Static (recommended):** point the site’s document root at **`www/`** (or upload `www/`). No Node process and **no `npm start`** are required.
 - **Build on server:** application root = repo root, run **`npm install`** and **`npm run build`**, then serve **`www/`** with Apache/nginx.
-- **Hosts that insist on `npm start`:** `package.json` includes **`start`** → runs **`vite preview`** on **`www/`** (uses **`PORT`** if set, else **4173**). This is only for panels that require a Node process; prefer static serving when possible. **`vite` must be installed** (do not use `npm install --omit=dev` unless you move `vite` to `dependencies`).
+- **Hosts that require an application startup file:** set it to **`app.js`** at the repo root (same as **`npm start`** — serves **`www/`** via Vite preview). Uses env **`PORT`** or **`NODE_PORT`**, else **4173**. **`vite`** and **`@vitejs/plugin-react`** are in **`dependencies`** so **`npm install --omit=dev`** can still work for serving. Prefer static **`www/`** when you can.
 
 Admin “Publish to GitHub” updates **`public/...`** and **`www/...`** in the repo.
 
