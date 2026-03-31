@@ -11,8 +11,19 @@ repository root/
 ├── admin.html
 ├── src/
 ├── public/
-└── dist/               # production build (`npm run build` — commit this when you deploy from Git)
+└── dist/               # production build — see “Git vs server” below
 ```
+
+## Git vs server (matches cPanel guidance)
+
+Your host wants **one application root** where **`app.js`**, **`vite.config.ts`**, source files, **and** the **build output** (`dist/`) all live together **on the server**. That does **not** mean everything has to be **committed to GitHub**.
+
+| Folder | Commit / push to GitHub? | Why |
+|--------|---------------------------|-----|
+| **`node_modules/`** | **No** — never | Created by **`npm install`** from `package.json` / `package-lock.json`. Large and machine-specific. Already in `.gitignore`. |
+| **`dist/`** | **Optional** | Must **exist on the server** next to `package.json` so `app.js` / Vite preview can serve it. **Either:** (1) run **`npm run build`** on the server after **`npm install`** (use a full install so **TypeScript / Vite** are available to build), **or** (2) build on your PC and deploy `dist/` by FTP, **or** (3) stop ignoring `dist/` in `.gitignore` and **commit `dist/`** if you only run **`git pull`** on the server and **cannot** run a build there. |
+
+Right now **`dist/` is listed in `.gitignore`**, so it is **not** pushed unless you remove that line on purpose. After **`npm install`**, you still need **`npm run build`** somewhere (local or server) to create **`dist/`**.
 
 ## Commands (repo root)
 
@@ -38,7 +49,7 @@ Follow your host’s guidance so **nothing is split** across two folders:
 4. **Setup Node.js App** → **Application root**: use the **relative** path only, e.g. **`repositories/<repo-name>`** — do **not** include `/home/.../`.
 5. **Startup file:** **`app.js`** (at that same root, next to `package.json`).
 6. **Node.js:** **18** or **20** (not 10).
-7. Run **NPM Install**, then **`npm run build`** on the server if you build there (needs devDependencies for TypeScript), **or** build locally and push **`dist/`** so the tree is complete.
+7. Run **NPM Install** (full install, not production-only, if you will **`npm run build`** on the server). Then run **`npm run build`** so **`dist/`** exists in that same directory — **or** build locally and upload **`dist/`**, **or** commit **`dist/`** if you choose to track it in Git.
 
 All of **`app.js`**, **`vite.config.ts`**, **`src/`**, **`public/`**, and **`dist/`** must live in **that one** application root — no separate `www` tree elsewhere.
 
