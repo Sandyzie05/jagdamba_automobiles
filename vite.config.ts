@@ -7,7 +7,8 @@ export default defineConfig({
   plugins: [react()],
   base: '/jagdambaautomobiles/',
   build: {
-    outDir: 'www',
+    // Standard Vite output name — lives next to app.js, package.json, src/, public/
+    outDir: 'dist',
     emptyOutDir: true,
     rollupOptions: {
       input: {

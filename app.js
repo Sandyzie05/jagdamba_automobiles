@@ -1,6 +1,6 @@
 /**
  * Node application entry for hosts that require a startup file (e.g. cPanel).
- * Serves the production build in ./www — same as `npm start` / `vite preview`.
+ * Serves the production build in ./dist — same as `npm start` / `vite preview`.
  */
 import { spawn } from 'node:child_process'
 import path from 'node:path'

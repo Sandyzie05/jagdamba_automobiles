@@ -1,36 +1,58 @@
 # Jagdamba Automobiles website
 
-`package.json` is at the **repository root** so hosts that scan the app folder for Node/npm find it without an extra `app/` path.
+Everything for this app lives in **one repository root** (no nested `app/` folder, no second copy of the project).
 
-## Layout
+```
+repository root/
+├── app.js              # Node entry (cPanel “startup file”) — optional; serves dist/ via Vite preview
+├── package.json
+├── vite.config.ts
+├── index.html
+├── admin.html
+├── src/
+├── public/
+└── dist/               # production build (`npm run build` — commit this when you deploy from Git)
+```
 
-- **`www/`** — production build. Upload its **contents** to your host (e.g. `public_html/jagdambaautomobiles/`).
-- **`public/`** — static assets and `data/inventory.json` (source for the next build).
-- **`src/`** — React source.
-
-## Commands (run at repo root)
+## Commands (repo root)
 
 ```bash
 npm install
-npm run dev      # local development
-npm run build    # refresh www/
-npm run preview  # test the built site locally
+npm run dev       # dev server (subpath in vite.config.ts)
+npm run build     # writes to dist/
+npm run preview   # test dist/ locally
+npm start         # same as node app.js — preview dist/
 ```
 
-`vite.config.ts` **`base`** must match the URL path where the site is served (e.g. `/jagdambaautomobiles/`). Use `'/'` only if the site is at the domain root.
+`vite.config.ts` **`base`** must match the URL path (e.g. `/jagdambaautomobiles/`). Use `'/'` only at the domain root.
 
-## Hosting
+---
 
-- **Static (recommended):** point the site’s document root at **`www/`** (or upload `www/`). No Node process and **no `npm start`** are required.
-- **Build on server:** application root = repo root, run **`npm install`** and **`npm run build`**, then serve **`www/`** with Apache/nginx.
-- **Hosts that require an application startup file:** set it to **`app.js`** at the repo root (same as **`npm start`** — serves **`www/`** via Vite preview). Uses env **`PORT`** or **`NODE_PORT`**, else **4173**. **`vite`** and **`@vitejs/plugin-react`** are in **`dependencies`** so **`npm install --omit=dev`** can still work for serving. Prefer static **`www/`** when you can.
+## cPanel + GitHub (single directory)
 
-Admin “Publish to GitHub” updates **`public/...`** and **`www/...`** in the repo.
+Follow your host’s guidance so **nothing is split** across two folders:
 
-## Build fails with `SyntaxError: Unexpected token ?` in TypeScript
+1. **Remove** the old Node.js app in cPanel.
+2. **Delete** any duplicate clone directories under `repositories/` (e.g. both `jagdamba_automobiles` and `jagdambaautomobiles`). Use **one** folder name that matches **one** GitHub repo clone.
+3. **Re-clone** the GitHub repository once into `repositories/<repo-name>/`.
+4. **Setup Node.js App** → **Application root**: use the **relative** path only, e.g. **`repositories/<repo-name>`** — do **not** include `/home/.../`.
+5. **Startup file:** **`app.js`** (at that same root, next to `package.json`).
+6. **Node.js:** **18** or **20** (not 10).
+7. Run **NPM Install**, then **`npm run build`** on the server if you build there (needs devDependencies for TypeScript), **or** build locally and push **`dist/`** so the tree is complete.
 
-The server is almost certainly using **Node.js 10** (paths like `nodevenv/.../10/`). This stack needs **Node 18+** (20 LTS recommended).
+All of **`app.js`**, **`vite.config.ts`**, **`src/`**, **`public/`**, and **`dist/`** must live in **that one** application root — no separate `www` tree elsewhere.
 
-In your hosting **Node.js / Application** UI, change the app’s **Node version** from **10** to **18** or **20**, save, run **NPM Install** again, then **npm run build**.
+---
 
-If you see a warning that `npm` and `node` are different binaries, enable **`--scripts-prepend-node-path`** in npm config or use the host’s “Run NPM Install” button so scripts use the same Node as the virtual environment.
+## Hosting modes
+
+- **Static (simplest):** point the web server document root at **`dist/`** (contents). No Node required for visitors.
+- **Node + `app.js`:** serves **`dist/`** via Vite preview; set **`PORT`** / **`NODE_PORT`** as your host expects.
+
+Admin “Publish to GitHub” writes **`public/...`** and **`dist/...`** in the repo.
+
+---
+
+## Build fails with `SyntaxError: Unexpected token ?`
+
+Use **Node 18+** in the Node.js app settings, reinstall, rebuild.

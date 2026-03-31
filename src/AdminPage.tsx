@@ -254,7 +254,7 @@ function AdminPage() {
           : [],
       )
 
-      const siteInventoryFile = 'www/data/inventory.json'
+      const siteInventoryFile = 'dist/data/inventory.json'
       const sourceInventoryFile = 'public/data/inventory.json'
 
       const imagePathsForGithub = imageUploads.flatMap((upload) => [
@@ -264,7 +264,7 @@ function AdminPage() {
           message: `Upload inventory image for ${upload.itemId} (source)`,
         },
         {
-          path: `www/${upload.path}`,
+          path: `dist/${upload.path}`,
           file: upload.file,
           message: `Upload inventory image for ${upload.itemId} (site)`,
         },
@@ -293,7 +293,7 @@ function AdminPage() {
 
     try {
       await deleteGithubFile(settings, `public/${item.imagePath}`, `Remove inventory image: ${item.name}`)
-      await deleteGithubFile(settings, `www/${item.imagePath}`, `Remove inventory image: ${item.name}`)
+      await deleteGithubFile(settings, `dist/${item.imagePath}`, `Remove inventory image: ${item.name}`)
     } catch {
       // Swallow delete errors; item removal should still succeed.
     }
