@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls:*)",
+      "Bash(grep -E \"\\\\.\\(tsx?|ts|css\\)$\")",
+      "Bash(wc -l /Users/sandgupt/RandomIdeasWithAI/jagdamba_automobiles/src/*.tsx /Users/sandgupt/RandomIdeasWithAI/jagdamba_automobiles/src/*.ts)",
+      "Bash(git -C /Users/sandgupt/RandomIdeasWithAI/jagdamba_automobiles log --oneline)"
+    ]
+  }
+}
