@@ -13,7 +13,7 @@
       "priceText": "Starting from ₹",
       "featured": true,
       "inStock": true,
-      "imagePath": "images/WhatsApp Image 2026-03-22 at 23.23.01.jpeg",
+      "imagePath": "images/shop-helmets.jpeg",
       "imageAlt": "Helmet wall inside Jagdamba Automobiles",
       "tags": ["helmet", "safety", "commuter"],
       "updatedAt": "2026-03-23T00:00:00.000Z"
@@ -27,7 +27,7 @@
       "priceText": "Ask for fitment",
       "featured": true,
       "inStock": true,
-      "imagePath": "images/WhatsApp Image 2026-03-22 at 23.58.28.jpeg",
+      "imagePath": "images/shop-tyres.jpeg",
       "imageAlt": "Alloy wheels and tyre display at the shop",
       "tags": ["tyre", "upgrade", "fitment"],
       "updatedAt": "2026-03-23T00:00:00.000Z"
@@ -41,7 +41,7 @@
       "priceText": "Wholesale available",
       "featured": true,
       "inStock": true,
-      "imagePath": "images/WhatsApp Image 2026-03-22 at 22.54.43.jpeg",
+      "imagePath": "images/shop-spare-parts.jpeg",
       "imageAlt": "Shelves packed with spare parts and accessories",
       "tags": ["spare-part", "wholesale", "retail"],
       "updatedAt": "2026-03-23T00:00:00.000Z"
@@ -55,7 +55,7 @@
       "priceText": "Available in store",
       "featured": false,
       "inStock": true,
-      "imagePath": "images/WhatsApp Image 2026-03-22 at 22.54.42.jpeg",
+      "imagePath": "images/shop-accessories.jpeg",
       "imageAlt": "Accessory display shelves inside the shop",
       "tags": ["accessory", "lights", "custom"],
       "updatedAt": "2026-03-23T00:00:00.000Z"
@@ -69,7 +69,7 @@
       "priceText": "Custom pricing",
       "featured": false,
       "inStock": true,
-      "imagePath": "images/WhatsApp Image 2026-03-22 at 23.58.28.jpeg",
+      "imagePath": "images/shop-tyres.jpeg",
       "imageAlt": "Custom alloy wheel display in the store",
       "tags": ["bundle", "custom", "alloy-wheel"],
       "updatedAt": "2026-03-23T00:00:00.000Z"
@@ -97,7 +97,7 @@
       "priceText": "Wholesale pricing",
       "featured": false,
       "inStock": true,
-      "imagePath": "images/WhatsApp Image 2026-03-22 at 22.54.42 (1).jpeg",
+      "imagePath": "images/shop-wholesale.jpeg",
       "imageAlt": "Helmet and stock shelves in the store",
       "tags": ["wholesale", "stock", "retail"],
       "updatedAt": "2026-03-23T00:00:00.000Z"
