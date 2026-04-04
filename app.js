@@ -40,6 +40,9 @@ const server = http.createServer((req, res) => {
     urlPath = urlPath.slice(BASE.length) || '/'
   }
 
+  // Decode percent-encoded characters (e.g. spaces in image filenames)
+  try { urlPath = decodeURIComponent(urlPath) } catch (_) {}
+
   // Route admin paths to admin.html
   if (urlPath === '/admin' || urlPath === '/admin.html' || urlPath.startsWith('/admin/')) {
     return serveFile(res, path.join(distDir, 'admin.html'))
