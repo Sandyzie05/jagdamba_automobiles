@@ -4,7 +4,25 @@
       "Bash(ls:*)",
       "Bash(grep -E \"\\\\.\\(tsx?|ts|css\\)$\")",
       "Bash(wc -l /Users/sandgupt/RandomIdeasWithAI/jagdamba_automobiles/src/*.tsx /Users/sandgupt/RandomIdeasWithAI/jagdamba_automobiles/src/*.ts)",
-      "Bash(git -C /Users/sandgupt/RandomIdeasWithAI/jagdamba_automobiles log --oneline)"
+      "Bash(git -C /Users/sandgupt/RandomIdeasWithAI/jagdamba_automobiles log --oneline)",
+      "Bash(git rm:*)",
+      "Bash(git commit:*)",
+      "Bash(node app.js)",
+      "Bash(xargs kill:*)",
+      "Bash(node /Users/sandgupt/RandomIdeasWithAI/jagdamba_automobiles/app.js)",
+      "Bash(curl -s -o /dev/null -w 'Encoded URL status: %{http_code}, size: %{size_download} bytes\\\\n' http://localhost:4173/jagdambaautomobiles/images/WhatsApp%20Image%202026-03-22%20at%2023.23.01.jpeg)",
+      "Bash(curl -s -o /dev/null -w 'Spaces URL status: %{http_code}, size: %{size_download} bytes\\\\n' 'http://localhost:4173/jagdambaautomobiles/images/WhatsApp Image 2026-03-22 at 23.23.01.jpeg' --globoff)",
+      "Bash(curl -s -o /dev/null -w 'Parens URL status: %{http_code}, size: %{size_download} bytes\\\\n' 'http://localhost:4173/jagdambaautomobiles/images/WhatsApp%20Image%202026-03-22%20at%2022.54.42%20\\(1\\).jpeg')",
+      "Bash(curl -s -o /dev/null -w 'Plain URL status: %{http_code}, size: %{size_download} bytes\\\\n' http://localhost:4173/jagdambaautomobiles/images/store_front.jpeg)",
+      "Bash(curl -s -o /dev/null -w \"Homepage: %{http_code}\\\\n\" http://localhost:4173/jagdambaautomobiles/)",
+      "Bash(curl -s -o /dev/null -w 'inventory.json: %{http_code}, size: %{size_download} bytes\\\\n' http://localhost:4173/jagdambaautomobiles/data/inventory.json)",
+      "Bash(curl -s -o /dev/null -w \"Admin page: %{http_code}\\\\n\" http://localhost:4173/jagdambaautomobiles/admin.html)",
+      "Bash(git add:*)",
+      "Bash(curl -s -I \"https://sandyzie.in/jagdambaautomobiles/images/WhatsApp%20Image%202026-03-22%20at%2022.54.43.jpeg\")",
+      "Bash(curl -s -I \"https://sandyzie.in/jagdambaautomobiles/images/store_front.jpeg\")",
+      "Bash(npm run:*)",
+      "Bash(python3:*)",
+      "Bash(npx tsc:*)"
     ]
   }
 }

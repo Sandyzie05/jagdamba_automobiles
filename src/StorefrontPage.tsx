@@ -8,12 +8,38 @@ import {
   type InventoryItem,
 } from './inventory'
 import { directionsUrl, siteContent } from './siteContent'
+import MotorcycleAssembly from './MotorcycleAssembly'
 
 const fadeInUp = {
   initial: { opacity: 0, y: 22 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true, amount: 0.18 },
 }
+
+const categoryIcons = [
+  // Wrench — Routine parts
+  <svg key="wrench" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+  </svg>,
+  // Shield — Rider safety
+  <svg key="shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+    <polyline points="9 12 11 14 15 10" />
+  </svg>,
+  // Circle ring — Tyres
+  <svg key="tyre" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <circle cx="12" cy="12" r="10" />
+    <circle cx="12" cy="12" r="4" />
+    <line x1="12" y1="2" x2="12" y2="8" />
+    <line x1="12" y1="16" x2="12" y2="22" />
+    <line x1="2" y1="12" x2="8" y2="12" />
+    <line x1="16" y1="12" x2="22" y2="12" />
+  </svg>,
+  // Zap — Modified accessories
+  <svg key="zap" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+  </svg>,
+]
 
 type Language = 'en' | 'hi'
 
@@ -386,6 +412,8 @@ export default function StorefrontPage() {
 
   return (
     <div className="storefront-shell">
+      <div className="page-layout">
+      <div className="page-content">
       <div className="utility-strip">
         <div className="utility-inner">
           {t.utility.map((line) => (
@@ -394,6 +422,7 @@ export default function StorefrontPage() {
         </div>
       </div>
 
+      <div className="sticky-header">
       <header className="retail-header">
         <a className="retail-brand" href="#top" aria-label="Jagdamba Automobiles home">
           <img src={siteContent.supportingImages.brandMark} alt="Jagdamba Automobiles logo" />
@@ -435,6 +464,7 @@ export default function StorefrontPage() {
           </a>
         </div>
       </header>
+      </div>
 
       <main id="top">
         <section className="retail-hero">
@@ -448,6 +478,21 @@ export default function StorefrontPage() {
               <p className="retail-kicker">{t.hero.kicker}</p>
               <h1>{t.hero.title}</h1>
               <p className="retail-summary">{t.hero.summary}</p>
+
+              <div className="trust-metrics" aria-label="Key trust signals">
+                <div className="trust-metric">
+                  <strong>30+</strong>
+                  <span>{language === 'hi' ? 'साल का अनुभव' : 'Years in Business'}</span>
+                </div>
+                <div className="trust-metric">
+                  <strong>{language === 'hi' ? 'रिटेल' : 'Retail'}</strong>
+                  <span>{language === 'hi' ? '+ होलसेल सप्लाई' : '+ Wholesale Supply'}</span>
+                </div>
+                <div className="trust-metric">
+                  <strong>15yr</strong>
+                  <span>{language === 'hi' ? 'सर्विस विशेषज्ञता' : 'Service Expertise'}</span>
+                </div>
+              </div>
 
               <div className="retail-search">
                 <label className="sr-only" htmlFor="inventory-search">
@@ -497,10 +542,13 @@ export default function StorefrontPage() {
           </div>
 
           <div className="category-grid">
-            {t.categoryPanels.map((item) => (
+            {t.categoryPanels.map((item, index) => (
               <motion.article className="category-panel" key={item.title} {...fadeInUp}>
-                <h3>{item.title}</h3>
-                <p>{item.text}</p>
+                <div className="category-icon">{categoryIcons[index]}</div>
+                <div>
+                  <h3>{item.title}</h3>
+                  <p>{item.text}</p>
+                </div>
               </motion.article>
             ))}
           </div>
@@ -570,8 +618,9 @@ export default function StorefrontPage() {
             </div>
 
             <div className="service-band-grid">
-              {t.serviceHighlights.map((item) => (
+              {t.serviceHighlights.map((item, index) => (
                 <motion.article className="service-band-item" key={item.title} {...fadeInUp}>
+                  <div className="service-number">{String(index + 1).padStart(2, '0')}</div>
                   <h3>{item.title}</h3>
                   <p>{item.description}</p>
                 </motion.article>
@@ -691,6 +740,12 @@ export default function StorefrontPage() {
           {t.actions.admin}
         </a>
       </footer>
+      </div>{/* end .page-content */}
+
+      <aside className="page-moto-rail" aria-label="Motorcycle assembly animation">
+        <MotorcycleAssembly />
+      </aside>
+      </div>{/* end .page-layout */}
     </div>
   )
 }
